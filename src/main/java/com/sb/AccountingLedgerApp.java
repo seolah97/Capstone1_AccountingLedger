@@ -1,6 +1,7 @@
 package com.sb;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileWriter;
 
 
 import static com.sb.Ledger.displayLedger;
@@ -11,6 +12,8 @@ public class AccountingLedgerApp {
     // Create static methods
     static ArrayList<Transactions> transactions = new ArrayList<Transactions>();
     static Scanner scanner = new Scanner(System.in);
+    static boolean append;
+    static FileWriter writer;
     public static void main(String[] args) {
 
         //Home Screen
