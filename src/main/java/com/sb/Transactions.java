@@ -96,9 +96,10 @@ public class Transactions { // Payments and Deposits in here
         // Save input into the csv file using try/catch and file writer
         try {
             writer = new FileWriter("./src/main/java/com/sb/transactions.csv", true);
-            writer.write( "Deposit: " + date + "|" + time + "|" + desc + "|" + vendor + "|" + amount);
+            writer.write( "\nDeposit: " + date + "|" + time + "|" + desc + "|" + vendor + "|" + "$" + amount);
             writer.close();
         }catch (IOException e){
+            System.out.println("Your Deposit was unsuccessful");
             throw new RuntimeException(e);
         }
 
@@ -108,8 +109,11 @@ public class Transactions { // Payments and Deposits in here
     public static void makePayment(){
         // Prompt user for payment info.
         System.out.println("Add Payment");
-        System.out.println("Type Date of Payment as follows: HH:MM:SS ");
+        System.out.println("Type Date of Payment as follows: (MM/DD/YY) ");
         String date = scanner.nextLine();
+
+        System.out.println("Enter Time of the Payment as follows (HH:MM:SS)");
+        String time = scanner.nextLine();
 
         System.out.println("Brief Description of Payment : ");
         String desc = scanner.nextLine();
@@ -125,6 +129,14 @@ public class Transactions { // Payments and Deposits in here
         transactions.add(payments);
 
         // Save input into the csv file using try/catch and file writer
+        try {
+            writer = new FileWriter("./src/main/java/com/sb/transactions.csv", true);
+            writer.write( "\nPayments: " + date + "|" + time + "|" + desc + "|" + vendor + "|" + "$" + amount);
+            writer.close();
+        }catch (IOException e){
+            System.out.println("Your Payment was unsuccessful");
+            throw new RuntimeException(e);
+        }
 
     }
 
