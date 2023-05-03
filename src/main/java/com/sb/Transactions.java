@@ -70,6 +70,7 @@ public class Transactions { // Payments and Deposits in here
     }
 
     // Custom Methods
+
     public static void addDeposit(){
         // Prompt user for deposit info.
         System.out.println("Add Deposit");
@@ -96,7 +97,7 @@ public class Transactions { // Payments and Deposits in here
         // Save input into the csv file using try/catch and file writer
         try {
             writer = new FileWriter("./src/main/java/com/sb/transactions.csv", true);
-            writer.write( "\nDeposit: " + date + "|" + time + "|" + desc + "|" + vendor + "|" + "$" + amount);
+            writer.write( "\nDeposit: " + date + "| " + time + "| " + desc + "| " + vendor + "| " + "$" + amount);
             writer.close();
         }catch (IOException e){
             System.out.println("Your Deposit was unsuccessful");
@@ -104,7 +105,6 @@ public class Transactions { // Payments and Deposits in here
         }
 
     }
-
 
     public static void makePayment(){
         // Prompt user for payment info.
@@ -131,7 +131,7 @@ public class Transactions { // Payments and Deposits in here
         // Save input into the csv file using try/catch and file writer
         try {
             writer = new FileWriter("./src/main/java/com/sb/transactions.csv", true);
-            writer.write( "\nPayments: " + date + "|" + time + "|" + desc + "|" + vendor + "|" + "$" + amount);
+            writer.write( "\nPayments: " + date + "| " + time + "| " + desc + "| " + vendor + "| " + "$" + amount);
             writer.close();
         }catch (IOException e){
             System.out.println("Your Payment was unsuccessful");
