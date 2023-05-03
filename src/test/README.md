@@ -1,5 +1,15 @@
-Still need to make payments show up Negative in Transactions file.
+Got it to print as a Neg. number when payments are added, but it is just superficial.
 
-Got rid of Ledger Class and Moved Ledger Display Screen into Main Accounting Ledger App Class.
+My reader is not able to differentiate Payments and Deposits, bc both are still Positive integers.
+
+Only displays All Transactions properly.
+
+It does Display deposits, but pulls both deposit and payments
+
+
+Might have to create new variables?
+
+
+
 
 

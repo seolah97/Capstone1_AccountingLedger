@@ -111,7 +111,7 @@ public class AccountingLedgerApp {
     public static void displayDeps(){
         for (Transactions transactions : transactions) {
             if (transactions.getAmount() > 0 ) {
-                System.out.println(transactions.getAmount());
+                System.out.println("Deposit: " + transactions);
             }
         }
 
