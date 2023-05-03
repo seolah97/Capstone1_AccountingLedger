@@ -117,12 +117,12 @@ public class AccountingLedgerApp {
 
     }
 
-    public static void displayPays(){
-        for (Transactions transaction : transactions) {
-            if (transactions.getAmount() < 0 ) {
-                System.out.println(transactions.getAmount());
-            }  //This one won't work properly until I figure out how to write payments as neg.
-        }
-
-    }
+    public static void displayPays(){}
+//        for (Transactions transaction : transactions) {
+//            if (transactions.getAmount() < 0 ) {
+//                System.out.println(transactions.getAmount());
+//            }  //This one won't work properly until I figure out how to write payments as neg.
+//        }
+//
+//    }
 }
