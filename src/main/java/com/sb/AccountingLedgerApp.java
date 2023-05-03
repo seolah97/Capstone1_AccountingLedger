@@ -1,8 +1,8 @@
 package com.sb;
-import java.io.BufferedWriter;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.FileWriter;
 
 import static com.sb.Reports.showReports;
 import static com.sb.Transactions.addDeposit;
@@ -90,6 +90,18 @@ public class AccountingLedgerApp {
 
     }
 
+    public static void Transactions(){
+        try {
+            FileReader readFromFile = new FileReader("./src/main/java/com/sb/transactions.csv");
+            BufferedReader bufferedReader = new BufferedReader(readFromFile);
+
+            bufferedReader.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
     public static void displayAll(){
         for (Transactions currentTransactions : transactions) {
             System.out.println(currentTransactions);
@@ -97,12 +109,20 @@ public class AccountingLedgerApp {
     }
 
     public static void displayDeps(){
+        for (Transactions transactions : transactions) {
+            if (transactions.getAmount() > 0 ) {
+                System.out.println(transactions.getAmount());
+            }
+        }
 
     }
 
     public static void displayPays(){
+        for (Transactions transaction : transactions) {
+            if (transactions.getAmount() < 0 ) {
+                System.out.println(transactions.getAmount());
+            }  //This one won't work properly until I figure out how to write payments as neg.
+        }
 
     }
-
-
 }
