@@ -92,13 +92,13 @@ public class AccountingLedgerApp {
 
     }
 
-    public static void displayAll() { //Need to stop getting it to run infinite values after reading file
+
+    public static void displayAll() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
-            String file;
-            file = bufferedReader.readLine();
-            while (file != null) {
-                System.out.println(bufferedReader.readLine());
+            String input;
+            while ((input = bufferedReader.readLine()) != null) {
+                System.out.println(input);
             }
             bufferedReader.close();
         } catch (IOException e) {
@@ -106,11 +106,12 @@ public class AccountingLedgerApp {
         }
     }
 
-        public static void displayDeps () {  //Need to somehow filter deposits
+        public static void displayDeps () {  //Need to somehow filter deposits- Just prints out all for now
             try {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
-                while(bufferedReader.readLine() !=null){
-                System.out.println(bufferedReader.readLine());
+                String input;
+                while ((input = bufferedReader.readLine()) != null) {
+                    System.out.println(input);
                 }
                 bufferedReader.close();
             } catch (IOException e) {
