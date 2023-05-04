@@ -2,6 +2,7 @@ package com.sb;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.io.IOException;
 
@@ -91,26 +92,35 @@ public class AccountingLedgerApp {
 
     }
 
-    public static void displayAll() {
+    public static void displayAll() { //Need to stop getting it to run infinite values after reading file
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
-            String line;
-            while((line = reader.readLine()) !=null){
-            System.out.println(reader.readLine());
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
+            String file;
+            file = bufferedReader.readLine();
+            while (file != null) {
+                System.out.println(bufferedReader.readLine());
             }
-            reader.close();
+            bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-        public static void displayDeps () {
-            for (Transactions transactions : transactions) {
-
+        public static void displayDeps () {  //Need to somehow filter deposits
+            try {
+                BufferedReader bufferedReader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
+                while(bufferedReader.readLine() !=null){
+                System.out.println(bufferedReader.readLine());
+                }
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
         }
 
         public static void displayPays () {
+
         }
 
 }
