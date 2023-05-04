@@ -93,8 +93,11 @@ public class AccountingLedgerApp {
 
     public static void displayAll() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"));
+            BufferedReader reader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
+            String line;
+            while((line = reader.readLine()) !=null){
             System.out.println(reader.readLine());
+            }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
