@@ -3,6 +3,7 @@ package com.sb;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.IOException;
 
 import static com.sb.Reports.showReports;
 import static com.sb.Transactions.addDeposit;
@@ -14,6 +15,7 @@ public class AccountingLedgerApp {
     static Scanner scanner = new Scanner(System.in);
     static boolean append;
     static FileWriter writer;
+
     public static void main(String[] args) {
 
         //Home Screen
@@ -51,10 +53,9 @@ public class AccountingLedgerApp {
         } while (!input.equalsIgnoreCase("X"));
 
 
-
     }
 
-    public static void displayLedger(){
+    public static void displayLedger() {
         String input;
         do { //Ledger - All entries should show the newest entries first
             System.out.println("Ledger");
@@ -67,7 +68,7 @@ public class AccountingLedgerApp {
 
             input = scanner.nextLine();
 
-            switch(input){ // Ledger Menu
+            switch (input) { // Ledger Menu
                 case "A":
                     displayAll(); // Runs custom static method called displayAll
                     break;
@@ -90,39 +91,23 @@ public class AccountingLedgerApp {
 
     }
 
-    public static void Transactions(){
+    public static void displayAll() {
         try {
-            FileReader readFromFile = new FileReader("./src/main/java/com/sb/transactions.csv");
-            BufferedReader bufferedReader = new BufferedReader(readFromFile);
-
-            bufferedReader.close();
-        } catch (IOException e){
+            BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"));
+            System.out.println(reader.readLine());
+            reader.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
-    public static void displayAll(){
-        for (Transactions currentTransactions : transactions) {
-            System.out.println(currentTransactions);
-        }
-    }
+        public static void displayDeps () {
+            for (Transactions transactions : transactions) {
 
-    public static void displayDeps(){
-        for (Transactions transactions : transactions) {
-            if (transactions.getAmount() > 0 ) {
-                System.out.println("Deposit: " + transactions);
             }
         }
 
-    }
+        public static void displayPays () {
+        }
 
-    public static void displayPays(){}
-//        for (Transactions transaction : transactions) {
-//            if (transactions.getAmount() < 0 ) {
-//                System.out.println(transactions.getAmount());
-//            }  //This one won't work properly until I figure out how to write payments as neg.
-//        }
-//
-//    }
 }
