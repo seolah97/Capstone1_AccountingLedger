@@ -11,7 +11,7 @@ public class Transactions { // Payments and Deposits in here
     public static String time;
     public String desc;
     public String vendor;
-    public float amount;
+    public static float amount;
 
     //Constructor
     public Transactions(String date, String time, String desc, String vendor, float amount) {

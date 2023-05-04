@@ -7,8 +7,7 @@ import java.util.Scanner;
 import java.io.IOException;
 
 import static com.sb.Reports.showReports;
-import static com.sb.Transactions.addDeposit;
-import static com.sb.Transactions.makePayment;
+import static com.sb.Transactions.*;
 
 public class AccountingLedgerApp {
     // Create static methods
@@ -110,11 +109,13 @@ public class AccountingLedgerApp {
             try {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
                 String input;
-                if (transactions.amount() > 0 )
+                for (Transactions transaction : transactions) {
+                    if (amount > 0) {
                 while ((input = bufferedReader.readLine()) != null) {
-                    System.out.println(input);
+                    System.out.println(input);}
                 }
                 bufferedReader.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -122,6 +123,21 @@ public class AccountingLedgerApp {
         }
 
         public static void displayPays () {
+            try {
+                BufferedReader bufferedReader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
+                String input;
+
+                for (Transactions transaction : transactions) {
+                    if ( amount< 0) {
+                        while ((input = bufferedReader.readLine()) != null) {
+                            System.out.println(input);}
+                    }
+                    bufferedReader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
 
         }
 
