@@ -123,6 +123,8 @@ public class Transactions { // Payments and Deposits in here
 
         System.out.println("Amount of the Payment: ");
         float amount = scanner.nextFloat();
+        float paymentAmount = amount * -1;
+
         scanner.nextLine();
 
         Transactions payments = new Transactions(date, time, desc, vendor, amount);
@@ -131,7 +133,7 @@ public class Transactions { // Payments and Deposits in here
         // Save input into the csv file using try/catch and file writer
         try {
             writer = new FileWriter("./src/main/java/com/sb/transactions.csv", true);
-            writer.write( "\nPayments: " + date + " | " + time + " | " + desc + " | " + vendor + " | " + "-$" + amount);
+            writer.write( "\nPayments: " + date + " | " + time + " | " + desc + " | " + vendor + " | " + "$" + paymentAmount);
             writer.close();
         }catch (IOException e){
             System.out.println("Your Payment was unsuccessful");

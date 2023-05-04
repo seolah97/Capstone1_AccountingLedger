@@ -110,6 +110,7 @@ public class AccountingLedgerApp {
             try {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
                 String input;
+                if (transactions.amount() > 0 )
                 while ((input = bufferedReader.readLine()) != null) {
                     System.out.println(input);
                 }
