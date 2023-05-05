@@ -1,10 +1,12 @@
 package com.sb;
 
-import java.io.*;
+import  java.io.*;
 import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Scanner;
 import java.io.IOException;
+import java.util.regex.Pattern;
+
 
 import static com.sb.Reports.showReports;
 import static com.sb.Transactions.*;
@@ -17,6 +19,7 @@ public class AccountingLedgerApp {
     static FileWriter writer;
 
     public static void main(String[] args) {
+
 
         //Home Screen
         // Initialize variable for user input
@@ -42,6 +45,7 @@ public class AccountingLedgerApp {
                 case "P":    // P) Make Payment (Debit)
                     // prompt user for the debit information and save it to the csv file
                     makePayment();
+                    break;
                 case "L":    // L) Ledger - display the ledger screen
                     displayLedger();
                     break;
@@ -107,38 +111,30 @@ public class AccountingLedgerApp {
 
         public static void displayDeps () {  //Need to somehow filter deposits- Just prints out all for now
             try {
-                BufferedReader bufferedReader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
-                String input;
-                for (Transactions transaction : transactions) {
-                    if (amount > 0) {
-                while ((input = bufferedReader.readLine()) != null) {
-                    System.out.println(input);}
+                BufferedReader reader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
+                String line;
+                while((line = reader.readLine()) !=null){
+                    System.out.println(reader.readLine());
                 }
-                bufferedReader.close();
-                }
+                reader.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
+
+
 
         public static void displayPays () {
             try {
-                BufferedReader bufferedReader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
-                String input;
-
-                for (Transactions transaction : transactions) {
-                    if ( amount< 0) {
-                        while ((input = bufferedReader.readLine()) != null) {
-                            System.out.println(input);}
-                    }
-                    bufferedReader.close();
+                BufferedReader reader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
+                String line;
+                while((line = reader.readLine()) !=null){
+                    System.out.println(reader.readLine());
                 }
+                reader.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
         }
 
 }
