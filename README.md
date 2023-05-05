@@ -8,7 +8,7 @@ The user will be prompted for the following info. (date, time, description, vend
     date|time|description|vendor|amount
     2023-04-15|10:13:25|ergonomic keyboard|Amazon|-89.50 2023-04-15|11:15:00|Invoice 1001 paid|Joe|1500.00 
 
-ACCOUNTING lEDGER APP HOME SCREEN
+ACCOUNTING LEDGER APP HOME SCREEN
 
         //Home Screen
         // Initialize variable for user input
