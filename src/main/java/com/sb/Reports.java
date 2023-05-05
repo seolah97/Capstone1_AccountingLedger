@@ -12,8 +12,7 @@ public class Reports {
         //REPORT SUB-SCREEN
         short subInput;
         do {
-
-
+            System.out.println("REPORTS MENU");
             System.out.println("\t1) Month to Date"); //Shows entries from the current month to current date
             System.out.println("\t2) Previous Month"); // Shows entries from just the previous month
             System.out.println("\t3) Year to Date"); // Shows entries from the current year to the current date

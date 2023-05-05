@@ -11,7 +11,8 @@ public class Transactions { // Payments and Deposits in here
     public static String time;
     public String desc;
     public String vendor;
-    public static float amount;
+    public float amount;
+
 
     //Constructor
     public Transactions(String date, String time, String desc, String vendor, float amount) {
@@ -129,6 +130,7 @@ public class Transactions { // Payments and Deposits in here
 
         Transactions payments = new Transactions(date, time, desc, vendor, amount);
         transactions.add(payments);
+        System.out.println("Your Payment has been added Successfully!");
 
         // Save input into the csv file using try/catch and file writer
         try {
@@ -141,5 +143,7 @@ public class Transactions { // Payments and Deposits in here
         }
 
     }
+
+
 
 }
