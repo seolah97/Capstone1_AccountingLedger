@@ -1,8 +1,13 @@
 package com.sb;
 
+import  java.io.*;
+import java.time.LocalDateTime;
+import java.util.regex.Pattern;
+
 import static com.sb.AccountingLedgerApp.scanner;
 
 public class Reports {
+    static LocalDateTime today;
     public static void showReports() {
         //REPORT SUB-SCREEN
         short subInput;
@@ -56,6 +61,41 @@ public class Reports {
 
     }
     public static void searchByVendor(){
+        System.out.println("Type the vendor name you would like to look up. \n Name: ");
+        String userInput = scanner.next();
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("./src/main/java/com/sb/transactions.csv"));
+            String input;
+
+            while ((input = bufferedReader.readLine()) != null) {
+                // input split ||
+                String[] splitInput = input.split(Pattern.quote("|"));
+
+                String date = splitInput[0];
+                String time = splitInput[1];
+                String description = splitInput[2];
+                String vendor = splitInput[3];
+                float amount = Float.parseFloat(splitInput[4]);
+
+                Transactions transactions = new Transactions(date, time, description, vendor, amount); // [190, Madison Brown, 40, 17.50]
+
+                if (vendor.equalsIgnoreCase(userInput)) {
+
+                    System.out.printf("Transaction: %s, %s, %s, %s, $%.2f\n",
+                            transactions.getDate(),
+                            transactions.getTime(),
+                            transactions.getDesc(),
+                            transactions.getVendor(),
+                            transactions.getAmount()
+                    );
+                }
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("");
 
     }
 //        String date = "2023-04-15";
