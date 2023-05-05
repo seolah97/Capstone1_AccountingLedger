@@ -2,9 +2,11 @@ package com.sb;
 
 import  java.io.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
 import static com.sb.AccountingLedgerApp.scanner;
+import static com.sb.AccountingLedgerApp.transactions;
 
 public class Reports {
     static LocalDateTime today;
@@ -48,6 +50,38 @@ public class Reports {
     }
 
     public static void monthToDate(){
+        FileReader transactionsFile = null;
+        try {
+            transactionsFile = new FileReader("./src/main/java/com/sb/transactions.csv");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        BufferedReader bufferedReader = new BufferedReader(transactionsFile);
+        String input;
+        try {
+            input = bufferedReader.readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String[] splitInput = input.split(Pattern.quote("|"));
+        String timeInput = splitInput[0];
+        String dateInput = splitInput[1];
+        String descriptionInput = splitInput[2];
+        String vendorInput = splitInput[3];
+        float amountInput = (float) Double.parseDouble(splitInput[4]);
+        Transactions currentTransaction = new Transactions(timeInput, dateInput, descriptionInput, vendorInput, amountInput);
+        System.out.printf("Transaction: %s, %s, %s, %s, $%.2f\n",
+                currentTransaction.getTime(),
+                currentTransaction.getDate(),
+                currentTransaction.getDesc(),
+                currentTransaction.getVendor(),
+                currentTransaction.getAmount()
+        );
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String dateTime = dateInput + " " + timeInput;
+        LocalDateTime transactionDateTime = LocalDateTime.parse(dateTime, dateTimeFormatter);
+        LocalDateTime now = LocalDateTime.now();
+
 
     }
     public static void previousMonth(){
@@ -108,4 +142,26 @@ public class Reports {
 //
 //        System.out.println(localDateTime);
 
+//        try {
+//            FileReader transactionFile = new FileReader("./src/main/java/com/sc/transactions.txt");
+//            BufferedReader bufferedReader = new BufferedReader(transactionFile);
+//
+//            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-DD HH:mm:ss");
+//            LocalDateTime transactionDateTime = LocalDateTime.parse(dateTime, dateTimeFormatter);
+//
+//            LocalDateTime now = LocalDateTime.now();
+//            int currentYear = now.getYear();
+//            int currentMonth = now.getMonthValue();
+//
+//            int transactionYear = transactionDateTime.getYear();
+//            int transactionMonth = transactionDateTime.getMonthValue();
+//
+//            if(currentYear == transactionYear && currentMonth == transactionMonth){
+//                System.out.println("Magic");
+//            }
+//
+//            bufferedReader.close();
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
 }
